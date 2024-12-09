@@ -1,0 +1,22 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+int main() {
+    std::map<std::string, int> state_populations;
+    state_populations["Maharashtra"] = 120000000;
+    state_populations["Karnataka"] = 60000000;
+    state_populations["Tamil Nadu"] = 80000000;
+
+    std::string state_name;
+    std::cout << "Enter the name of a state: ";
+    std::getline(std::cin, state_name);
+
+    if (state_populations.find(state_name) != state_populations.end()) {
+        std::cout << "Population of " << state_name << ": " << state_populations[state_name] << std::endl;
+    } else {
+        std::cout << "State not found." << std::endl;
+    }
+
+    return 0;
+}

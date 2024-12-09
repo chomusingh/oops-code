@@ -1,0 +1,50 @@
+complex number
+
+
+#include <iostream>
+
+class Complex {
+public:
+    double real, imag;
+
+    // Default constructor
+    Complex() : real(0), imag(0) {}
+
+    // Constructor with parameters
+    Complex(double r, double i) : real(r), imag(i) {}
+
+    // Overloaded addition operator
+    Complex operator+(const Complex& c) const {
+        return Complex(real + c.real, imag + c.imag);
+    }
+
+    // Overloaded multiplication operator
+    Complex operator*(const Complex& c) const {
+        return Complex(real * c.real - imag * c.imag, real * c.imag + imag * c.real);
+    }
+
+    // Overloaded stream insertion operator
+    friend std::ostream& operator<<(std::ostream& out, const Complex& c) {
+        out << c.real << " + " << c.imag << "i";
+        return out;
+    }
+
+    // Overloaded stream extraction operator
+    friend std::istream& operator>>(std::istream& in, Complex& c) {
+        in >> c.real >> c.imag;
+        return in;
+    }
+};
+
+int main() {
+    Complex c1(2, 3), c2(4, 5);
+    Complex c3 = c1 + c2;
+    Complex c4 = c1 * c2;
+
+    std::cout << "c1: " << c1 << std::endl;
+    std::cout << "c2: " << c2 << std::endl;
+    std::cout << "c3: " << c3 << std::endl;
+    std::cout << "c4: " << c4 << std::endl;
+
+    return 0;
+}

@@ -1,0 +1,36 @@
+#include <iostream>
+
+template <typename T>
+void selectionSort(T arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        std::swap(arr[i], arr[min_idx]);
+    }
+}
+
+int main() {
+    int int_arr[] = {5, 2, 9, 1, 5};
+    float float_arr[] = {3.14, 1.57, 2.71, 4.14};
+
+    selectionSort(int_arr, sizeof(int_arr) / sizeof(int_arr[0]));
+    selectionSort(float_arr, sizeof(float_arr) / sizeof(float_arr[0]));
+
+    std::cout << "Sorted integer array: ";
+    for (int i = 0; i < sizeof(int_arr) / sizeof(int_arr[0]); i++) {
+        std::cout << int_arr[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Sorted float array: ";
+    for (int i = 0; i < sizeof(float_arr) / sizeof(float_arr[0]); i++) {
+        std::cout << float_arr[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}

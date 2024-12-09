@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+class Publication {
+public:
+    std::string title;
+    float price;
+
+    Publication(std::string t = "", float p = 0) : title(t), price(p) {}
+};
+
+class Book : public Publication {
+public:
+    int page_count;
+
+    Book(std::string t = "", float p = 0, int pc = 0) : Publication(t, p), page_count(pc) {}
+};
+
+class Tape : public Publication {
+public:
+    float playing_time;
+
+    Tape(std::string t = "", float p = 0, float pt = 0) : Publication(t, p), playing_time(pt) {}
+};
+
+int main() {
+    Book b("C++ Programming", 500, 500);
+    Tape t("Music CD", 200, 60);
+
+    std::cout << "Book Title: " << b.title << std::endl;
+    std::cout << "Book Price: " << b.price << std::endl;
+    std::cout << "Book Page Count: " << b.page_count << std::endl;
+
+    std::cout << "\nTape Title: " << t.title << std::endl;
+    std::cout << "Tape Price: " << t.price << std::endl;
+    std::cout << "Tape Playing Time: " << t.playing_time << std::endl;
+
+    return 0;
+}
